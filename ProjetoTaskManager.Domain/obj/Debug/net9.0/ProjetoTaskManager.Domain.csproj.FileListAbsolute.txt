@@ -1,0 +1,11 @@
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\bin\Debug\net9.0\ProjetoTaskManager.Domain.deps.json
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\bin\Debug\net9.0\ProjetoTaskManager.Domain.dll
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\bin\Debug\net9.0\ProjetoTaskManager.Domain.pdb
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\ProjetoTaskManager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\ProjetoTaskManager.Domain.AssemblyInfoInputs.cache
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\ProjetoTaskManager.Domain.AssemblyInfo.cs
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\ProjetoTaskManager.Domain.csproj.CoreCompileInputs.cache
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\ProjetoTaskManager.Domain.dll
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\refint\ProjetoTaskManager.Domain.dll
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\ProjetoTaskManager.Domain.pdb
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\ref\ProjetoTaskManager.Domain.dll
