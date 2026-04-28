@@ -17,3 +17,4 @@ C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Infrastru
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Infrastructure\obj\Debug\net9.0\ProjetoTaskManager.Infrastructure.pdb
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Infrastructure\obj\Debug\net9.0\ProjetoTaskManager.Infrastructure.genruntimeconfig.cache
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Infrastructure\obj\Debug\net9.0\ref\ProjetoTaskManager.Infrastructure.dll
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Infrastructure\obj\Debug\net9.0\ProjetoTaskManager.Infrastructure.sourcelink.json

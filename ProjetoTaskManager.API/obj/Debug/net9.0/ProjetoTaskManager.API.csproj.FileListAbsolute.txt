@@ -58,3 +58,7 @@ C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.API\bin\D
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.API\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.API\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.API\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.API\bin\Debug\net9.0\Properties\appsettings.example.json
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.API\bin\Debug\net9.0\AutoMapper.dll
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.API\bin\Debug\net9.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.API\obj\Debug\net9.0\ProjetoTaskManager.API.sourcelink.json

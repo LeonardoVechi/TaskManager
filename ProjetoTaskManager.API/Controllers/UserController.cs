@@ -1,119 +1,76 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ProjetoTaskManager.Data;
 using ProjetoTaskManager.Application.DTOs;
-using ProjetoTaskManager.Models;
-using ProjetoTaskManager.Services;
+using ProjetoTaskManager.Application.Services;
 
-namespace ProjetoTaskManager.Controllers
+namespace ProjetoTaskManager.API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UserController : ControllerBase
+    public class UserController : BaseController
     {
-        private readonly AppDbContext _appDbContext;
-        private readonly TokenService _tokenService;
+        private readonly UserService _userService;
 
-        public UserController(AppDbContext appDbContext, TokenService tokenService)
+        public UserController(UserService userService)
         {
-            _appDbContext = appDbContext;
-            _tokenService = tokenService;
+            _userService = userService;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto dto)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+                return BadRequestResponse(ModelState);
 
-            var emailExistente = await _appDbContext.users
-                .AnyAsync(u => u.Email == dto.Email);
+            var (success, message, data) = await _userService.RegisterAsync(dto);
+            if (!success) return ConflictResponse(message);
 
-            if (emailExistente)
-                return Conflict("Email já cadastrado");
-
-            var user = new User
-            {
-                Name = dto.Name,
-                Email = dto.Email,
-                Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
-            };
-
-            _appDbContext.users.Add(user);
-            await _appDbContext.SaveChangesAsync();
-
-            return Created(string.Empty, new { user.Id, user.Name, user.Email });
+            return CreatedResponse(data);
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
-            var user = await _appDbContext.users
-                .FirstOrDefaultAsync(u => u.Email == dto.Email);
+            var (success, token) = await _userService.LoginAsync(dto);
+            if (!success) return UnauthorizedResponse("Email ou senha inválidos");
 
-            if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
-                return Unauthorized("Email ou senha inválidos");
-
-            var token = _tokenService.GenerateToken(user);
-
-            return Ok(new { token });
+            return OkResponse(new { token });
         }
 
         [Authorize]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
+        public async Task<IActionResult> GetAllUsers()
         {
-            var users = await _appDbContext.users
-                .Select(u => new { u.Id, u.Name, u.Email })
-                .ToListAsync();
-
-            return Ok(users);
+            var users = await _userService.GetAllAsync();
+            return OkResponse(users);
         }
 
         [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
-            var user = await _appDbContext.users.FindAsync(id);
+            var user = await _userService.GetByIdAsync(id);
+            if (user == null) return NotFoundResponse("Usuário não encontrado");
 
-            if (user == null)
-                return NotFound("Usuário não encontrado");
-
-            return Ok(new { user.Id, user.Name, user.Email });
+            return OkResponse(user);
         }
 
         [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, [FromBody] RegisterDto dto)
         {
-            var user = await _appDbContext.users.FindAsync(id);
+            var (success, data) = await _userService.UpdateAsync(id, dto);
+            if (!success) return NotFoundResponse("Usuário não encontrado");
 
-            if (user == null)
-                return NotFound("Usuário não encontrado");
-
-            user.Name = dto.Name;
-            user.Email = dto.Email;
-            user.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
-
-            await _appDbContext.SaveChangesAsync();
-
-            return Ok(new { user.Id, user.Name, user.Email });
+            return OkResponse(data);
         }
 
         [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _appDbContext.users.FindAsync(id);
+            var success = await _userService.DeleteAsync(id);
+            if (!success) return NotFoundResponse("Usuário não encontrado");
 
-            if (user == null)
-                return NotFound("Usuário não encontrado");
-
-            _appDbContext.users.Remove(user);
-            await _appDbContext.SaveChangesAsync();
-
-            return Ok("Usuário deletado com sucesso");
+            return OkResponse("Usuário deletado com sucesso");
         }
     }
 }

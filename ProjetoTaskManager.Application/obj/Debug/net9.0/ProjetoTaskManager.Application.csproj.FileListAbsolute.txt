@@ -13,3 +13,4 @@ C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Applicati
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Application\obj\Debug\net9.0\refint\ProjetoTaskManager.Application.dll
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Application\obj\Debug\net9.0\ProjetoTaskManager.Application.pdb
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Application\obj\Debug\net9.0\ref\ProjetoTaskManager.Application.dll
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Application\obj\Debug\net9.0\ProjetoTaskManager.Application.sourcelink.json

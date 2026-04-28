@@ -9,3 +9,4 @@ C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\ob
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\refint\ProjetoTaskManager.Domain.dll
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\ProjetoTaskManager.Domain.pdb
 C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\ref\ProjetoTaskManager.Domain.dll
+C:\Users\leona\ProjetoTakManagerComArquituraCorreta\ProjetoTaskManager.Domain\obj\Debug\net9.0\ProjetoTaskManager.Domain.sourcelink.json

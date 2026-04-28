@@ -1,13 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "C7b/MQUuK58=",
+  "dgSpecHash": "772Zz+Nh354=",
   "success": true,
   "projectFilePath": "C:\\Users\\leona\\ProjetoTakManagerComArquituraCorreta\\ProjetoTaskManager.API\\ProjetoTaskManager.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\leona\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\leona\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\bcrypt.net-next\\3.1.0\\bcrypt.net-next.3.1.0.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.7\\microsoft.aspnetcore.authentication.jwtbearer.7.0.7.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.15\\microsoft.aspnetcore.openapi.9.0.15.nupkg.sha512",
+    "C:\\Users\\leona\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.7\\microsoft.entityframeworkcore.7.0.7.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.7\\microsoft.entityframeworkcore.abstractions.7.0.7.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.7\\microsoft.entityframeworkcore.analyzers.7.0.7.nupkg.sha512",
@@ -43,9 +46,21 @@
   ],
   "logs": [
     {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "O pacote 'AutoMapper' 12.0.1 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "projectPath": "C:\\Users\\leona\\ProjetoTakManagerComArquituraCorreta\\ProjetoTaskManager.API\\ProjetoTaskManager.API.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\leona\\ProjetoTakManagerComArquituraCorreta\\ProjetoTaskManager.API\\ProjetoTaskManager.API.csproj",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    },
+    {
       "code": "NU1902",
       "level": "Warning",
-      "message": "Package 'System.IdentityModel.Tokens.Jwt' 7.0.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-59j7-ghrg-fj52",
+      "message": "O pacote 'System.IdentityModel.Tokens.Jwt' 7.0.0 tem uma moderado vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-59j7-ghrg-fj52",
       "projectPath": "C:\\Users\\leona\\ProjetoTakManagerComArquituraCorreta\\ProjetoTaskManager.API\\ProjetoTaskManager.API.csproj",
       "warningLevel": 1,
       "filePath": "C:\\Users\\leona\\ProjetoTakManagerComArquituraCorreta\\ProjetoTaskManager.API\\ProjetoTaskManager.API.csproj",

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using ProjetoTaskManager.Models;
+using ProjetoTaskManager.Domain.Entities;
 
-namespace ProjetoTaskManager.Data
+namespace ProjetoTaskManager.Infrastructure.Persistence
 {
     public class AppDbContext : DbContext
     {

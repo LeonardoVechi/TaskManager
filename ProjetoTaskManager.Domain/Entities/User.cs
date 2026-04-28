@@ -4,12 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjetoTaskManager.Models
+namespace ProjetoTaskManager.Domain.Entities
 {
-    public class User
+    public class User : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
 
         [Required(ErrorMessage = "Nome é um campo obrigatório")]
         [MaxLength(50, ErrorMessage ="Nome pode conter no máximo 50 caracteres")]

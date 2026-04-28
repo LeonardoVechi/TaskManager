@@ -3,9 +3,9 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using ProjetoTaskManager.Models;
+using ProjetoTaskManager.Domain.Entities;
 
-namespace ProjetoTaskManager.Services
+namespace ProjetoTaskManager.Application.Services
 {
     public class TokenService
     {
