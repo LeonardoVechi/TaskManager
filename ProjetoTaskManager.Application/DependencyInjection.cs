@@ -21,6 +21,7 @@ namespace ProjetoTaskManager.Application
         {
             services.AddScoped<UserService>();
             services.AddScoped<TokenService>();
+            services.AddScoped<CardService>();
 
             return services;
         }
@@ -28,7 +29,10 @@ namespace ProjetoTaskManager.Application
         private static IServiceCollection ConfigureMappings(
             this IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(UserMapping));
+            services.AddAutoMapper(
+                typeof(UserMapping),
+                typeof(CardMapping)
+            );
 
             return services;
         }

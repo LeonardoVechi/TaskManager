@@ -12,5 +12,6 @@ namespace ProjetoTaskManager.Infrastructure.Persistence
         public AppDbContext(DbContextOptions options) : base(options){}
 
         public DbSet<User> users {get; set;}
+        public DbSet<Card> Cards { get; set; }
     }
 }

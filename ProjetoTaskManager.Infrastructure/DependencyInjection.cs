@@ -15,6 +15,7 @@ namespace ProjetoTaskManager.Infrastructure
         {
             services.ConfigureDatabase(configuration);
             services.ConfigureRepositories();
+            services.ConfigureServices();
             return services;
         }
 
@@ -36,6 +37,13 @@ namespace ProjetoTaskManager.Infrastructure
             this IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICardRepository, CardRepository>();
+            return services;
+        }
+         private static IServiceCollection ConfigureServices(
+            this IServiceCollection services)
+        {
+            services.AddScoped<IEncryptService, EncryptService>();
             return services;
         }
     }

@@ -1,4 +1,5 @@
-using ProjetoTaskManager.Application.DTOs;
+using AutoMapper;
+using ProjetoTaskManager.Application.DTOs.User;
 using ProjetoTaskManager.Application.Interfaces;
 using ProjetoTaskManager.Domain.Entities;
 
@@ -8,62 +9,81 @@ namespace ProjetoTaskManager.Application.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly TokenService _tokenService;
+        private readonly IEncryptService _encryptService;
+        private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, TokenService tokenService)
+        public UserService(
+            IUserRepository userRepository,
+            TokenService tokenService,
+            IEncryptService encryptService,
+            IMapper mapper)
         {
             _userRepository = userRepository;
             _tokenService = tokenService;
+            _encryptService = encryptService;
+            _mapper = mapper;
         }
 
-        public async Task<(bool success, string message, object? data)> RegisterAsync(RegisterDto dto)
+        public async Task<(bool success, string message, UserDto? data)> RegisterAsync(CreateUserDto dto)
         {
             if (await _userRepository.EmailExistsAsync(dto.Email))
                 return (false, "Email já cadastrado", null);
 
-            var user = new User
-            {
-                Name = dto.Name,
-                Email = dto.Email,
-                Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
-            };
+            var user = _mapper.Map<User>(dto);
+            user.Password = _encryptService.Hash(dto.Password);
 
             await _userRepository.AddAsync(user);
-            return (true, "Usuário criado", new { user.Id, user.Name, user.Email });
+            return (true, "Usuário criado", _mapper.Map<UserDto>(user));
         }
 
         public async Task<(bool success, string token)> LoginAsync(LoginDto dto)
         {
             var user = await _userRepository.GetByEmailAsync(dto.Email);
 
-            if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
+            if (user == null || !_encryptService.Verify(dto.Password, user.Password))
                 return (false, string.Empty);
 
-            var token = _tokenService.GenerateToken(user);
-            return (true, token);
+            return (true, _tokenService.GenerateToken(user));
         }
 
-        public async Task<IEnumerable<object>> GetAllAsync() =>
-            (await _userRepository.GetAllAsync())
-                .Select(u => new { u.Id, u.Name, u.Email } as object);
+        public async Task<IEnumerable<UserDto>> GetAllAsync()
+        {
+            var users = await _userRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<UserDto>>(users);
+        }
 
-        public async Task<object?> GetByIdAsync(int id)
+        public async Task<UserDto?> GetByIdAsync(int id)
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null) return null;
-            return new { user.Id, user.Name, user.Email };
+            return _mapper.Map<UserDto>(user);
         }
 
-        public async Task<(bool success, object? data)> UpdateAsync(int id, RegisterDto dto)
+        public async Task<(bool success, UserDto? data)> UpdateAsync(int id, UpdateUserDto dto)
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null) return (false, null);
 
-            user.Name = dto.Name;
-            user.Email = dto.Email;
-            user.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+            _mapper.Map(dto, user);
+            user.UpdateAt = DateTime.UtcNow;
 
             await _userRepository.UpdateAsync(user);
-            return (true, new { user.Id, user.Name, user.Email });
+            return (true, _mapper.Map<UserDto>(user));
+        }
+
+        public async Task<(bool success, string message)> UpdatePasswordAsync(int id, UpdatePasswordDto dto)
+        {
+            var user = await _userRepository.GetByIdAsync(id);
+            if (user == null) return (false, "Usuário não encontrado");
+
+            if (!_encryptService.Verify(dto.CurrentPassword, user.Password))
+                return (false, "Senha atual incorreta");
+
+            user.Password = _encryptService.Hash(dto.NewPassword);
+            user.UpdateAt = DateTime.UtcNow;
+
+            await _userRepository.UpdateAsync(user);
+            return (true, "Senha atualizada com sucesso");
         }
 
         public async Task<bool> DeleteAsync(int id)

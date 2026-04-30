@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ProjetoTaskManager.API.Controllers
@@ -6,6 +7,12 @@ namespace ProjetoTaskManager.API.Controllers
     [Route("api/[controller]")]
     public abstract class BaseController : ControllerBase
     {
+
+         protected int GetLoggedUserId()
+        {
+            var claim = User.FindFirst(ClaimTypes.NameIdentifier);
+            return int.Parse(claim!.Value);
+        }
         protected IActionResult OkResponse(object? data = null) =>
             Ok(new { success = true, data });
 
