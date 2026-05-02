@@ -14,9 +14,10 @@ builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddSwaggerGen(options =>
-{
+{   
+    //Implementação do JWT
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
+    {  
         Name = "Authorization",
         Type = SecuritySchemeType.Http,
         Scheme = "Bearer",
